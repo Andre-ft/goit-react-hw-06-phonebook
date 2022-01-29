@@ -1,6 +1,8 @@
 import React, {  useState } from 'react';
 import shortid from 'shortid';
+import { connect } from 'react-redux';
 import s from './ContactForm.module.css';
+import {addContact, deleteContact, changeFilter} from '../../redux/contacts/contacts-actions'
 
 function ContactForm({onSubmit, contactList}) {
   // state = {
@@ -96,3 +98,16 @@ function ContactForm({onSubmit, contactList}) {
 }
 
 export default ContactForm;
+
+// const mapStateToProps = state =>{
+//  return {
+//    contactList: state.contacts.items,
+
+//  }
+// }
+const mapDispatchToProps = dispatch => {
+return {
+    onSubmit: ({name, number}) => dispatch(addContact({name, number}))
+  }
+}
+// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

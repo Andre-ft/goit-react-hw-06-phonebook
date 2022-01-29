@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import ContactList from './components/ContactList';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import s from './App.module.css';
 import shortid from 'shortid';
+import * as actions from './redux/contacts/contacts-actions';
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -63,3 +65,17 @@ function App() {
 }
 
 export default App;
+/*
+const mapStateToProps = state => ({
+  contacts: state.contacts.items,
+  filter: state.contacts.filter
+})
+
+const mapDispatchToProps = dispatch=>({
+  addContact: ()=> dispatch(actions.addContact()),
+  deleteContact: ()=> dispatch(actions.deleteContact()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+*/
