@@ -6,10 +6,11 @@ import Filter from './components/Filter';
 import s from './App.module.css';
 import shortid from 'shortid';
 import * as actions from './redux/contacts/contacts-actions';
+// import { addContact, deleteContact, changeFilter };
 
-function App() {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
+function App({ contacts, filter, addContact, deleteContact }) {
+  // const [contacts, setContacts] = useState([]);
+  // const [filter, setFilter] = useState('');
 
   useEffect(() => {
     if (!contacts.length) {
@@ -17,22 +18,23 @@ function App() {
       const parsedContacts = JSON.parse(savedContacts);
 
       if (parsedContacts) {
-        setContacts(parsedContacts);
+        parsedContacts.map(({ name, number }) => addContact({ name, number }));
+        // setContacts(parsedContacts);
       }
       return;
     }
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const addContact = ({ name, number }) => {
-    const contact = {
-      id: shortid.generate(),
-      name,
-      number,
-    };
+  // const addContact = ({ name, number }) => {
+  //   const contact = {
+  //     id: shortid.generate(),
+  //     name,
+  //     number,
+  //   };
 
-    setContacts([contact, ...contacts]);
-  };
+  //   setContacts([contact, ...contacts]);
+  // };
 
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
@@ -42,40 +44,39 @@ function App() {
     );
   };
 
-  const deleteContact = contactId => {
-    const newContacts = contacts.filter(contact => contact.id !== contactId);
-    setContacts(newContacts);
-  };
+  // const deleteContact = contactId => {
+  //   const newContacts = contacts.filter(contact => contact.id !== contactId);
+  //   setContacts(newContacts);
+  // };
 
-  const visibleContacts = getVisibleContacts();
+  // const visibleContacts = getVisibleContacts();
 
   return (
     <div className={s.App}>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} contactList={contacts} />
+      <ContactForm /*onSubmit={addContact} contactList={contacts}*/ />
 
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={e => setFilter(e.currentTarget.value)} />
+      <Filter />
       <ContactList
-        contactList={visibleContacts}
-        onDeleteContact={deleteContact}
+        contactList={getVisibleContacts}
+        /*onDeleteContact={deleteContact}*/
       />
     </div>
   );
 }
 
-export default App;
-/*
+// export default App;
+
 const mapStateToProps = state => ({
   contacts: state.contacts.items,
-  filter: state.contacts.filter
-})
+  filter: state.contacts.filter,
+});
 
-const mapDispatchToProps = dispatch=>({
-  addContact: ()=> dispatch(actions.addContact()),
-  deleteContact: ()=> dispatch(actions.deleteContact()),
-})
+const mapDispatchToProps = dispatch => ({
+  addContact: ({ name, number }) =>
+    dispatch(actions.addContact({ name, number })),
+  deleteContact: () => dispatch(actions.deleteContact()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-*/

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import { addContact, deleteContact, changeFilter } from './contacts-actions';
-import { ADD, DELETE, CHANGE_FILTER } from './contacts/contacts-types';
+// import { ADD, DELETE, CHANGE_FILTER } from './contacts-types';
+import types from './contacts-types';
 
 // const items = createReducer([], {
 //   [addContact]: (state, { payload }) => [...state, payload],
@@ -15,20 +16,20 @@ import { ADD, DELETE, CHANGE_FILTER } from './contacts/contacts-types';
 
 const items = (state = [], { type, payload }) => {
   switch (type) {
-    case ADD:
+    case types.ADD:
       return [...state, payload];
 
-    case DELETE:
+    case types.DELETE:
       return state.filter(({ id }) => id !== payload);
 
     default:
-      break;
+      return state;
   }
 };
 
 const filter = (state = '', { type, payload }) => {
   switch (type) {
-    case CHANGE_FILTER:
+    case types.CHANGE_FILTER:
       return payload;
 
     default:

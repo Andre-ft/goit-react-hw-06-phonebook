@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 import shortid from 'shortid';
-import { ADD, DELETE, CHANGE_FILTER } from './contacts/contacts-types';
+import types from './contacts-types';
 
 // export const addContact = createAction(ADD, ({ name, number }) => ({
 //   payload: {
@@ -13,8 +13,8 @@ import { ADD, DELETE, CHANGE_FILTER } from './contacts/contacts-types';
 // export const deleteContact = createAction(DELETE);
 // export const changeFilter = createAction(CHANGE_FILTER);
 
-const addContact = ({ name, number }) => ({
-  type: ADD,
+export const addContact = ({ name, number }) => ({
+  type: types.ADD,
   payload: {
     id: shortid.generate(),
     name,
@@ -22,15 +22,14 @@ const addContact = ({ name, number }) => ({
   },
 });
 
-const deleteContact = id => ({
-  type: DELETE,
+export const deleteContact = id => ({
+  type: types.DELETE,
   payload: id,
 });
 
-const changeFilter = value => ({
-  type: CHANGE_FILTER,
+export const changeFilter = value => ({
+  type: types.CHANGE_FILTER,
   payload: value,
 });
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { addContact, deleteContact, changeFilter };
+// export default { addContact, deleteContact, changeFilter };

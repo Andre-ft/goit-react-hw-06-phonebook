@@ -97,17 +97,17 @@ function ContactForm({onSubmit, contactList}) {
     );
 }
 
-export default ContactForm;
+// export default ContactForm;
 
-// const mapStateToProps = state =>{
-//  return {
-//    contactList: state.contacts.items,
+const mapStateToProps = state =>{
+ return {
+   contactList: state.contacts.items,
 
-//  }
-// }
+ }
+}
 const mapDispatchToProps = dispatch => {
 return {
     onSubmit: ({name, number}) => dispatch(addContact({name, number}))
   }
 }
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

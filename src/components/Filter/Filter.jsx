@@ -10,7 +10,7 @@ const Filter = ({ value, onChange }) => (
   </label>
 );
 
-export default Filter;
+// export default Filter;
 
 const mapStateToProps = state => ({
   value: state.contacts.filter
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

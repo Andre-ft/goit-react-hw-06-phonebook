@@ -23,18 +23,18 @@ const ContactList = ({ contactList, onDeleteContact }) => (
   </>
 );
 
-export default ContactList;
+// export default ContactList;
 
-// const mapStateToProps = state => {
-//   return {
-    // contactList: state.contacts.items, // - ?????
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    contactList: state.contacts.items, // - ?????
+  }
+}
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onDeleteContact: (id) => dispatch(deleteContact({id})),
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeleteContact: (id) => dispatch(deleteContact(id)),
+  }
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
