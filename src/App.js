@@ -12,7 +12,8 @@ function App({ contacts, filter, addContact, deleteContact }) {
   // const [contacts, setContacts] = useState([]);
   // const [filter, setFilter] = useState('');
 
-  useEffect(() => {
+  // вместо useEffect используем persist
+  /*useEffect(() => {
     if (!contacts.length) {
       const savedContacts = localStorage.getItem('contacts');
       const parsedContacts = JSON.parse(savedContacts);
@@ -24,7 +25,8 @@ function App({ contacts, filter, addContact, deleteContact }) {
       return;
     }
     localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+}, [contacts]);
+  */
 
   // const addContact = ({ name, number }) => {
   //   const contact = {
@@ -35,7 +37,7 @@ function App({ contacts, filter, addContact, deleteContact }) {
 
   //   setContacts([contact, ...contacts]);
   // };
-
+  /*
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
@@ -43,6 +45,7 @@ function App({ contacts, filter, addContact, deleteContact }) {
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
+*/
 
   // const deleteContact = contactId => {
   //   const newContacts = contacts.filter(contact => contact.id !== contactId);
@@ -54,14 +57,11 @@ function App({ contacts, filter, addContact, deleteContact }) {
   return (
     <div className={s.App}>
       <h1>Phonebook</h1>
-      <ContactForm /*onSubmit={addContact} contactList={contacts}*/ />
+      <ContactForm />
 
       <h2>Contacts</h2>
       <Filter />
-      <ContactList
-        contactList={getVisibleContacts}
-        /*onDeleteContact={deleteContact}*/
-      />
+      <ContactList /*contactList={getVisibleContacts}*/ />
     </div>
   );
 }

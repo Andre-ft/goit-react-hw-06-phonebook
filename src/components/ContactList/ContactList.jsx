@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './ContactList.module.css';
-import {addContact, deleteContact, changeFilter} from '../../redux/contacts/contacts-actions'
+import { deleteContact} from '../../redux/contacts/contacts-actions'
 import { connect } from 'react-redux';
 
+  
+const ContactList = ({ contactList, onDeleteContact, filter }) => {
 
-const ContactList = ({ contactList, onDeleteContact }) => (
-  <>
+  return (<>
     <ul className="contactList">
       {contactList.map(({ id, name, number }) => (
         <li key={id} className={s.contactList__item}>
@@ -20,14 +21,22 @@ const ContactList = ({ contactList, onDeleteContact }) => (
         </li>
       ))}
     </ul>
-  </>
-);
+  </>)
+};
 
-// export default ContactList;
+const getVisibleContacts = (allContacts, filter) => {
+  const normalizedFilter = filter.toLowerCase();
 
-const mapStateToProps = state => {
+  return allContacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
+}
+
+
+const mapStateToProps = ({contacts:{filter, items}}) => {
+
   return {
-    contactList: state.contacts.items, // - ?????
+    contactList: getVisibleContacts(items, filter), 
   }
 }
 
