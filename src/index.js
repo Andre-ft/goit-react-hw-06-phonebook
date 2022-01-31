@@ -6,20 +6,20 @@ import store from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import AuthProvider from './contexts/auth/Provider';
+// import AuthProvider from './contexts/auth/Provider';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <Provider store={store.store}>
-        <PersistGate loading={null} persistor={store.persistor}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </PersistGate>
-      </Provider>
-    </AuthProvider>
+    {/* <AuthProvider> */}
+    <Provider store={store.store}>
+      <PersistGate loading={null} persistor={store.persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+    {/* </AuthProvider> */}
   </React.StrictMode>,
   document.getElementById('root'),
 );
