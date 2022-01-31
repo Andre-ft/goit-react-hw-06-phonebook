@@ -17,58 +17,13 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-
-// const initialState = {
-//   contacts: {
-//     items: [],
-//     filter: '',
-//   },
-// };
+import storage from 'redux-persist/lib/storage'; 
 
 const contactsPersistConfig = {
   key: 'contacts',
   storage,
   blacklist: ['filter'],
 };
-
-// const rootReducer = combineReducers({
-//   contacts: persistReducer(persistConfig, contactReducer),
-// });
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// const itemsReducer = (state = [], { type, payload }) => {
-//   switch (type) {
-//     case ADD:
-//       return [...state, payload];
-
-//     case DELETE:
-//       return state.filter(({ id }) => id !== payload);
-
-//     default:
-//       return state;
-//   }
-// };
-
-// const filterReducer = (state = '', { type, payload }) => {
-//   switch (type) {
-//     case CHANGE_FILTER:
-//       return payload;
-
-//     default:
-//       return state;
-//   }
-// };
-
-// const contactReducer = combineReducers({
-//   items: itemsReducer,
-//   filter: filterReducer,
-// });
-
-// const rootReducer = combineReducers({ contacts: contactReducer });
-
-// const store = createStore(rootReducer, composeWithDevTools());
 
 const middleware = [
   ...getDefaultMiddleware({
