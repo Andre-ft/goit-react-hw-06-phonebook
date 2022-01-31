@@ -7,15 +7,6 @@ import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
   
 export default function ContactList() {
 
-  // const getVisibleContacts = (allContacts, filter) => {
-  //   const normalizedFilter = filter.toLowerCase();
-
-  //   return allContacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter),
-  //   );
-  // };
-
-  // const contactList = useSelector(({ contacts: { filter, items } }) => getVisibleContacts(items, filter));
   const contactList = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
   const onDeleteContact =(id)=> dispatch(deleteContact(id))
@@ -38,18 +29,3 @@ export default function ContactList() {
     </ul>
   </>)
 };
-
-// const mapStateToProps = ({contacts:{filter, items}}) => {
-
-//   return {
-//     contactList: getVisibleContacts(items, filter), 
-//   }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onDeleteContact: (id) => dispatch(deleteContact(id)),
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
