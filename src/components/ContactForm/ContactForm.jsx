@@ -5,17 +5,12 @@ import s from './ContactForm.module.css';
 import {addContact, deleteContact, changeFilter} from '../../redux/contacts/contacts-actions'
 import { getItems } from '../../redux/contacts/contacts-selectors';
 
-// function ContactForm({ onSubmit, contactList }) {
+
 export default function ContactForm() {
-  // state = {
-    //   name: '',
-    //   number: '',
-    //   btnEnable: true,
-    // };
-    
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
-    const [btnEnable, setBtnEnable] = useState(true);
+  
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const [btnEnable, setBtnEnable] = useState(true);
     
   const contactList = useSelector(getItems);
   
@@ -103,18 +98,3 @@ export default function ContactForm() {
       </form>
     );
 }
-
-// export default ContactForm;
-
-// const mapStateToProps = state =>{
-//  return {
-//    contactList: state.contacts.items,
-
-//  }
-// }
-// const mapDispatchToProps = dispatch => {
-// return {
-//     onSubmit: ({name, number}) => dispatch(addContact({name, number}))
-//   }
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
