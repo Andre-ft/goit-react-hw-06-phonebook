@@ -16,17 +16,3 @@ export default function Filter() {
     </label>
   );
 };
-
-// export default Filter;
-
-// const mapStateToProps = state => ({
-//   value: state.contacts.filter
-// })
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onChange: (e)=> dispatch(changeFilter(e.currentTarget.value))
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Filter);
