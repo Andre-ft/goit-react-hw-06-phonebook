@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import ContactList from './components/ContactList';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import s from './App.module.css';
-import shortid from 'shortid';
-import * as actions from './redux/contacts/contacts-actions';
 
 export default function App() {
    return (
